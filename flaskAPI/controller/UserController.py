@@ -93,21 +93,6 @@ class LoginController(Resource):
                 print("not same")
                 return None
 
-
-    # def xx():
-    #      data = request.get_json()
-    # if data:
-    #     email = data['email']
-    #     passenger = Passenger.query.filter_by(email=email).first()
-    #     if passenger:
-    #         password_hashed = passenger.get_password()
-    #         entered_pwd = data['password']
-    #         if sha256_crypt.verify(entered_pwd, password_hashed):
-    #             return jsonify({"message": "Login success"}), 200
-    #         else:
-    #             return jsonify({"message": "Wrong password"}), 400
-    #     else:
-    #         return jsonify({"message": "Wrong username"}), 400
 class LogoutController(Resource):
     def post(self):
         json_data = request.get_json(force=True)
