@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import { Container, Table } from "react-bootstrap";
 import Axios from "axios";
 
+import service from "../../services/APIServices";
+
 const ShoppingCart = () => {
   const initialCarts = [
     {
@@ -11,10 +13,67 @@ const ShoppingCart = () => {
       customer_id: 1,
       product_qty: 2,
       item_price: 100,
+      qty: 1,
+    },
+    {
+      product_id: 1,
+      order_id: 1,
+      customer_id: 1,
+      product_qty: 2,
+      item_price: 100,
+      qty: 2,
     },
   ];
 
+  const getData = (event) => {
+    var userid = localStorage.getItem("userID");
+
+    var data = service.getOrder(userid);
+    setCarts(data);
+  };
+
+  const initCoupon = {
+    couponValue: "",
+    isApply: false,
+  };
+
+  useEffect(() => {
+    let value = 0;
+    carts.forEach((element) => {
+      value += element.item_price;
+    });
+
+    setTotalPrice(value);
+  });
   const [carts, setCarts] = useState(initialCarts);
+  const [coupon, setCoupon] = useState(initCoupon);
+  const [totalPrice, setTotalPrice] = useState(0);
+
+  const handleInputChange = (event) => {
+    const { name, value } = event.target;
+    setCoupon({ ...coupon, [name]: value });
+  };
+  const handleClickCoupon = (event) => {
+    if (coupon.couponValue === "FIRSTTIME") {
+      setCoupon({ isApply: true });
+      console.log("true");
+    }
+    console.log(coupon);
+  };
+
+  const handleClickRemoveItem = (event) => {
+    // service.deleteOrder(event.id);
+    // static remove
+
+    var items = carts;
+    items.forEach((element) => {
+      if (element.product_id == event.id) {
+        element.qty = 0;
+      }
+    });
+    setCarts(items);
+  };
+
   console.log(carts);
   return (
     <div>
@@ -70,17 +129,27 @@ const ShoppingCart = () => {
                             </td>
                             <td>
                               <div class="qty-wrap">
-                                <var class="qty">$1156.00</var>
+                                <var class="qty">{item.qty}</var>
                               </div>
                             </td>
                             <td>
                               <div class="price-wrap">
-                                <var class="price">$1156.00</var>
-                                <small class="text-muted"> $315.20 each </small>
+                                <var class="price">
+                                  ${item.item_price * item.qty}
+                                </var>
+                                <small class="text-muted">
+                                  {" "}
+                                  ${item.item_price} each{" "}
+                                </small>
                               </div>
                             </td>
                             <td class="text-right">
-                              <a href="" class="btn btn-light">
+                              <a
+                                href=""
+                                class="btn btn-light"
+                                name={item.product_id}
+                                onClick={handleClickRemoveItem}
+                              >
                                 {" "}
                                 Remove
                               </a>
@@ -103,22 +172,26 @@ const ShoppingCart = () => {
             <aside class="col-md-3">
               <div class="card mb-3">
                 <div class="card-body">
-                  <form>
-                    <div class="form-group">
-                      <label>Have coupon?</label>
-                      <div class="input-group">
-                        <input
-                          type="text"
-                          class="form-control"
-                          name=""
-                          placeholder="Coupon code"
-                        />
-                        <span class="input-group-append">
-                          <button class="btn btn-primary">Apply</button>
-                        </span>
-                      </div>
+                  <div class="form-group">
+                    <label>Have coupon?</label>
+                    <div class="input-group">
+                      <input
+                        type="text"
+                        class="form-control"
+                        name="couponValue"
+                        placeholder="Coupon code"
+                        onChange={handleInputChange}
+                      />
+                      <span class="input-group-append">
+                        <button
+                          class="btn btn-primary"
+                          onClick={handleClickCoupon}
+                        >
+                          Apply
+                        </button>
+                      </span>
                     </div>
-                  </form>
+                  </div>
                 </div>
               </div>
               <div class="card">
@@ -134,7 +207,9 @@ const ShoppingCart = () => {
                   <dl class="dlist-align">
                     <dt>Total:</dt>
                     <dd class="text-right  h5">
-                      <strong>$1,650</strong>
+                      <strong>
+                        {coupon.isApply ? totalPrice * 0.2 : totalPrice}
+                      </strong>
                     </dd>
                   </dl>
                   <hr />
