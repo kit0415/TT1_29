@@ -10,7 +10,7 @@ const register = data => {
 
 
 const getProduct = categoryid => {
-  return http.get('api/getProduct/'+ categoryid);
+  return http.get('api/getProduct/' + categoryid);
 };
 
 const addToCart = data => {
@@ -18,7 +18,7 @@ const addToCart = data => {
 };
 
 const getOrder = userid => {
-  return http.get('api/getOrder/'+ userid);
+  return http.get('api/getOrder/' + userid);
 };
 
 const deleteOrder = data => {
@@ -38,9 +38,9 @@ const updateOrderItem = data => {
   return http.post('/api/updateOrderItem', data);
 };
 
-const updateOrderItem = data => {
-  return http.post('/api/updateOrderItem', data);
-};
+// const updateOrderItem = data => {
+//   return http.post('/api/updateOrderItem', data);
+// };
 
 const logout = data => {
   return http.post('/api/logout', data);
