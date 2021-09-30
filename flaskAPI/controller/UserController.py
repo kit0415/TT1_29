@@ -67,42 +67,32 @@ class LoginController(Resource):
             return {"message": "Empty data"}, 400
         data = self.getUserById(json_data)
         print("data is "+json.dumps(data,default=str))
-        if data == 1:
-             return {'status': 'success', 'data': data}, 200
+        res = {
+            "user_id":data[1],
+            "token":data[0]
+        }
+        if data is not None:
+             return {'status': 'success', 'data': res}, 200
         else:
              return {'status': 'success', 'data': data}, 400
        
 
     
     def getUserById(self,req):
-        user = User.query.filter_by(id = req["id"]).first()
+        user = User.query.filter_by(username = req["username"]).first()
         if user:            
             if req["password"] == user.json()["password"]:
+                print("same")
                 token =  str(uuid4())
                 user.token = token
                # db.session.add(user)
                 db.session.commit()
                 db.session.close()
-                return token
+                return [token,user.id]
             else:
                 print("not same")
                 return None
 
-
-    # def xx():
-    #      data = request.get_json()
-    # if data:
-    #     email = data['email']
-    #     passenger = Passenger.query.filter_by(email=email).first()
-    #     if passenger:
-    #         password_hashed = passenger.get_password()
-    #         entered_pwd = data['password']
-    #         if sha256_crypt.verify(entered_pwd, password_hashed):
-    #             return jsonify({"message": "Login success"}), 200
-    #         else:
-    #             return jsonify({"message": "Wrong password"}), 400
-    #     else:
-    #         return jsonify({"message": "Wrong username"}), 400
 class LogoutController(Resource):
     def post(self):
         json_data = request.get_json(force=True)
