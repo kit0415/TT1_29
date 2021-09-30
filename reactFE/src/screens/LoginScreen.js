@@ -17,6 +17,11 @@ export default function Login() {
     // username, password
   }
 
+  function handleRegisterPage(event) {
+
+
+  }
+
   return (
     <div className="Login">
       <h1>Welcome to MarketPlace Login!</h1>
@@ -40,6 +45,10 @@ export default function Login() {
         </Form.Group>
         <Button block size="lg" type="submit" disabled={!validateForm()}>
           Login
+        </Button>
+
+        <Button block size="lg" type="submit" disabled={!handleRegisterPage()}>
+          Register
         </Button>
       </Form>
     </div>

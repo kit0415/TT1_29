@@ -7,23 +7,31 @@ export default function ProductPageScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
 
-
-
-  function handleOnPress() {
+  function handleOnPressShoppingCart() {
     //Call login function
     // username, password
 
-
+    console.log('You clicked logout.');
   }
+
+  function handleOnPressLogout() {
+    //Call login function
+    // username, password
+
+    console.log('You clicked Cart.');
+  }
+
 
   return (
     <div className="ProductPageScreen">
       <h1>Welcome to MarketPlace ProductPage!</h1>
-      <Form>
-        <Button block size="lg" type="submit" disabled={!handleOnPress()}>
-          Logout
-        </Button>
-      </Form>
+      <Button block size="lg" type="Cart" onClick={() => handleOnPressShoppingCart()}>
+        Shopping cart
+      </Button>
+
+      <Button block size="lg" type="Logout" onClick={() => handleOnPressLogout()}>
+        Logout
+      </Button>
     </div >
   );
 }

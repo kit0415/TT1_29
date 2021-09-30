@@ -9,7 +9,7 @@ export default function App() {
     <div>
       <Switch>
         <Route exact path="/">
-          <Login />
+          <ProductPageScreen />
         </Route>
         <Route path="/RegistrationScreen" component={RegistrationScreen} />
         <Route path="/LoginScreen" component={Login} />
@@ -18,4 +18,3 @@ export default function App() {
     </div >
   );
 }
-

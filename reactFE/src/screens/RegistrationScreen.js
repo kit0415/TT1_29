@@ -25,7 +25,7 @@ export default function Registration() {
 
   return (
     <div className="Login">
-      <h1>Welcome to MarketPlace Login!</h1>
+      <h1>Welcome to MarketPlace RegistrationScreen!</h1>
       <Form onSubmit={handleRegisterSubmit}>
         <Form.Group size="lg" controlId="username">
           <Form.Label>Username</Form.Label>
@@ -76,7 +76,6 @@ export default function Registration() {
             onChange={(e) => setgender(e.target.value)}
           />
         </Form.Group>
-
         <Form.Group size="lg" controlId="createdat">
           <Form.Label>Createdat : Optional</Form.Label>
           <Form.Control
