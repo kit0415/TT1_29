@@ -44,8 +44,50 @@ export default function Registration() {
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
+        <Form.Group size="lg" controlId="firstname">
+          <Form.Label>Firstname</Form.Label>
+          <Form.Control
+            type="firstname"
+            value={firstname}
+            onChange={(e) => setfirstname(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group size="lg" controlId="lastname">
+          <Form.Label>Lastname</Form.Label>
+          <Form.Control
+            type="lastname"
+            value={lastname}
+            onChange={(e) => setlastname(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group size="lg" controlId="postalcode">
+          <Form.Label>Postal Code</Form.Label>
+          <Form.Control
+            type="postalcode"
+            value={postalcode}
+            onChange={(e) => setpostalcode(e.target.value)}
+          />
+        </Form.Group>
+        <Form.Group size="lg" controlId="gender">
+          <Form.Label>Gender</Form.Label>
+          <Form.Control
+            type="gender"
+            value={gender}
+            onChange={(e) => setgender(e.target.value)}
+          />
+        </Form.Group>
+
+        <Form.Group size="lg" controlId="createdat">
+          <Form.Label>Createdat : Optional</Form.Label>
+          <Form.Control
+            type="createdat"
+            value={createdat}
+            onChange={(e) => setcreatedat(e.target.value)}
+          />
+        </Form.Group>
+
         <Button block size="lg" type="submit" disabled={!validateForm()}>
-          Login
+          Register
         </Button>
       </Form>
     </div>

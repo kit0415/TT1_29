@@ -15,8 +15,6 @@ export default function Login() {
   function handleLoginSubmit(event) {
     //Call login function
     // username, password
-
-
   }
 
   return (
@@ -47,3 +45,4 @@ export default function Login() {
     </div>
   );
 }
+
