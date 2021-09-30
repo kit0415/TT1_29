@@ -38,6 +38,13 @@ const updateOrderItem = data => {
   return http.post('/api/updateOrderItem', data);
 };
 
+const updateOrderItem = data => {
+  return http.post('/api/updateOrderItem', data);
+};
+
+const logout = data => {
+  return http.post('/api/logout', data);
+};
 
 export default {
   login,
@@ -48,5 +55,6 @@ export default {
   deleteOrder,
   updateOrder,
   updateProduct,
-  updateOrderItem
+  updateOrderItem,
+  logout
 }
