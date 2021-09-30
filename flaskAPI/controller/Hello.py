@@ -8,7 +8,7 @@ class Hello(Resource):
     def get(self):
         conn = db.connect()
         cursor = conn.cursor()
-        cursor.execute("""select * from tutorials""")
+        cursor.execute("""select * from customer""")
         rows = cursor.fetchall()
         print(rows)
         print(json.dumps(rows,default=str))
