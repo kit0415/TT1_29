@@ -2,11 +2,13 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
+
 import { useHistory } from "react-router-dom";
 
 export default function ProductPageScreen() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const history = useHistory();
 
   function handleOnPressShoppingCart() {
     //Call login function
@@ -25,7 +27,7 @@ export default function ProductPageScreen() {
   function handleOnPressTop() {
     //Call login function
     // username, password
-    //history.push("/TopProduct");
+    history.push("/TopProduct");
 
   }
 
@@ -42,7 +44,7 @@ export default function ProductPageScreen() {
       </Button>
 
       <Button block size="lg" type="Logout" onClick={() => handleOnPressTop()}>
-        Logout
+        Top Products
       </Button>
     </div >
   );

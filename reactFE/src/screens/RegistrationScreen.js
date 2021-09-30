@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
+import { useHistory } from "react-router-dom";
 
 export default function Registration() {
   const [username, setUsername] = useState("");
@@ -11,6 +12,7 @@ export default function Registration() {
   const [postalcode, setpostalcode] = useState("");
   const [gender, setgender] = useState("");
   const [createdat, setcreatedat] = useState("");
+  const history = useHistory();
 
   function validateForm() {
     //Add in validation criterias 

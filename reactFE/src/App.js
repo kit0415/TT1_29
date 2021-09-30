@@ -9,7 +9,7 @@ import RegistrationScreen from "./screens/RegistrationScreen";
 import NavBar from "./components/NavBar/NavBar";
 import ProductPageScreen from "./screens/ProductPageScreen";
 import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
-import TopProducts from "./screens/TopProduct";
+//import TopProducts from "./screens/TopProduct";
 
 function App() {
   return (
