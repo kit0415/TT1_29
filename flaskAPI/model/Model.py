@@ -6,6 +6,6 @@ from flaskext.mysql import MySQL
 
 
 ma = Marshmallow()
-db = MySQL()
+db = SQLAlchemy()
 
 
