@@ -9,16 +9,16 @@ const register = data => {
 };
 
 
-const getProduct = data => {
-  return http.get(`/getProduct/${categoryid}`);
+const getProduct = categoryid => {
+  return http.get('api/getProduct/'+ categoryid);
 };
 
 const addToCart = data => {
   return http.post('/api/addToCart', data);
 };
 
-const getOrder = data => {
-  return http.get('/getOrder/${userid}');
+const getOrder = userid => {
+  return http.get('api/getOrder/'+ userid);
 };
 
 const deleteOrder = data => {
@@ -38,6 +38,13 @@ const updateOrderItem = data => {
   return http.post('/api/updateOrderItem', data);
 };
 
+const updateOrderItem = data => {
+  return http.post('/api/updateOrderItem', data);
+};
+
+const logout = data => {
+  return http.post('/api/logout', data);
+};
 
 export default {
   login,
@@ -48,5 +55,6 @@ export default {
   deleteOrder,
   updateOrder,
   updateProduct,
-  updateOrderItem
+  updateOrderItem,
+  logout
 }
