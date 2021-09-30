@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
+import { useHistory } from "react-router-dom";
 
 export default function ProductPageScreen() {
   const [username, setUsername] = useState("");
@@ -10,15 +11,22 @@ export default function ProductPageScreen() {
   function handleOnPressShoppingCart() {
     //Call login function
     // username, password
+    history.push("/ShoppingCart");
 
-    console.log('You clicked logout.');
   }
 
   function handleOnPressLogout() {
     //Call login function
     // username, password
+    history.push("/LoginScreen");
 
-    console.log('You clicked Cart.');
+  }
+
+  function handleOnPressTop() {
+    //Call login function
+    // username, password
+    //history.push("/TopProduct");
+
   }
 
 
@@ -30,6 +38,10 @@ export default function ProductPageScreen() {
       </Button>
 
       <Button block size="lg" type="Logout" onClick={() => handleOnPressLogout()}>
+        Logout
+      </Button>
+
+      <Button block size="lg" type="Logout" onClick={() => handleOnPressTop()}>
         Logout
       </Button>
     </div >
