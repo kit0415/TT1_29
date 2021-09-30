@@ -2,21 +2,36 @@ import React, { useState } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import "./Login.css";
+import APIServices from "../services/APIServices"
+import { useHistory } from "react-router-dom";
 
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-
+ const history = useHistory();
   function validateForm() {
     //Add in validation criterias 
     return username.length > 0 && password.length > 0;
   }
 
-  function handleLoginSubmit(event) {
+  const handleLoginSubmit = (event) => {
     //Call login function
-    // username, password
+    event.preventDefault();
+    
+    var data = {
+      username: username,
+      password: password
+    };
 
-
+    APIServices.login(data)
+      .then(response => {
+        console.log(response.data);
+        localStorage.setItem('usertoken', response.data);
+        history.push("/ProductPageScreen");
+      })
+      .catch(e => {
+        console.log("Login Fail");
+      });
   }
 
   return (
