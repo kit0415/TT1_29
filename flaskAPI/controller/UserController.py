@@ -67,8 +67,12 @@ class LoginController(Resource):
             return {"message": "Empty data"}, 400
         data = self.getUserById(json_data)
         print("data is "+json.dumps(data,default=str))
+        res = {
+            "user_id":data[1],
+            "token":data[0]
+        }
         if data is not None:
-             return {'status': 'success', 'data': data}, 200
+             return {'status': 'success', 'data': res}, 200
         else:
              return {'status': 'success', 'data': data}, 400
        
@@ -84,7 +88,7 @@ class LoginController(Resource):
                # db.session.add(user)
                 db.session.commit()
                 db.session.close()
-                return token
+                return [token,user.id]
             else:
                 print("not same")
                 return None

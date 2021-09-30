@@ -42,11 +42,12 @@ class CartController(Resource):
         if json_data is None:
             return {"message": "Empty data"}, 400
         data = self.getCartItem(json_data)
-        print("data is "+json.dumps(data,default=str))
-        if data == 1:
-             return {'status': 'success', 'data': data}, 200
+        print("data is "+str([cart_item.json() for cart_item in data]))
+        #User.json() for customer in User.query.all()
+        if data is not None:
+             return {'status': 'success', 'data': str([cart_item.json() for cart_item in data])}, 200
         else:
-             return {'status': 'success', 'data': data}, 400
+             return {'status': 'success', 'data': None}, 400
 
     def post(self):
         json_data = request.get_json(force=True)
@@ -96,7 +97,7 @@ class CartController(Resource):
         if not cartItem:           
             return None
         else:
-            print(str(cartItem))
+            #print(str(cartItem))
             return cartItem
        
 
