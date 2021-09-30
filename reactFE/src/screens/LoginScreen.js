@@ -15,12 +15,11 @@ export default function Login() {
   function handleLoginSubmit(event) {
     //Call login function
     // username, password
-
-
   }
 
   return (
     <div className="Login">
+      <h1>Welcome to MarketPlace Login!</h1>
       <Form onSubmit={handleLoginSubmit}>
         <Form.Group size="lg" controlId="username">
           <Form.Label>Username</Form.Label>
@@ -46,3 +45,4 @@ export default function Login() {
     </div>
   );
 }
+
