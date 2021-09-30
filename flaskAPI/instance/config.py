@@ -9,7 +9,6 @@ DEBUG = True
 SECRET_KEY = "o1YqEK2zXmPn83WsxVGnIfS9PhhGGqF0"
 #connection = pypyodbc.connect("Driver={SQL Server};Server=desktop-h2vit3p;Database=SecureVision;Integrated Security=True;")\
 JSONIFY_PRETTYPRINT_REGULAR = False
-CORS_HEADERS = 'Content-Type'
 
 MYSQL_DATABASE_USER = 'remoteUser'
 MYSQL_DATABASE_PASSWORD = '123456'

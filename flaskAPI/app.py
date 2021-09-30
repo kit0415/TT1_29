@@ -4,7 +4,6 @@ from flask_restful import Api
 from controller.UserController import LoginController,RegisterController,LogoutController
 from controller.CartController import CartController
 
-from controller.ProductController import ProductController
 from controller.Hello import Hello
 
 
@@ -21,5 +20,4 @@ api.add_resource(LogoutController,'/logout')
 #cart
 api.add_resource(CartController,'/cart')
 
-api.add_resource(ProductController,'/product')
 #api.add_resource(CategoryResource,'/Category')

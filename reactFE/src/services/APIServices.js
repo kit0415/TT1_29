@@ -25,6 +25,9 @@ const deleteOrder = data => {
   return http.post('/api/deleteOrder', data);
 };
 
+const updateOrder = data => {
+  return http.post('/api/updateOrder', data);
+};
 
 const updateProduct = data => {
   return http.post('/api/updateProduct', data);
@@ -35,7 +38,7 @@ const updateOrderItem = data => {
   return http.post('/api/updateOrderItem', data);
 };
 
-const updateOrder = data => {
+const updateOrderItem = data => {
   return http.post('/api/updateOrderItem', data);
 };
 
