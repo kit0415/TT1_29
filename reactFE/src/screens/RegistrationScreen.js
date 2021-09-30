@@ -21,7 +21,6 @@ export default function Registration() {
   function handleRegisterSubmit(event) {
     //Call login function
     // username, password
-    history.push("/RegistrationScreen");
   }
 
   return (
@@ -85,13 +84,10 @@ export default function Registration() {
             onChange={(e) => setcreatedat(e.target.value)}
           />
         </Form.Group>
-        <Button block size="lg" type="submit"
-          onPress={handleRegisterSubmit}
-          title="Register"
-          Label="Register">
-          Submit
-        </Button>
 
+        <Button block size="lg" type="submit" disabled={!validateForm()}>
+          Register
+        </Button>
       </Form>
     </div>
   );

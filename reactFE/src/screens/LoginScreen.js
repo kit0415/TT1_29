@@ -8,7 +8,7 @@ import { useHistory } from "react-router-dom";
 export default function Login() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const history = useHistory();
+ const history = useHistory();
   function validateForm() {
     //Add in validation criterias 
     return username.length > 0 && password.length > 0;
@@ -17,7 +17,7 @@ export default function Login() {
   const handleLoginSubmit = (event) => {
     //Call login function
     event.preventDefault();
-
+    
     var data = {
       username: username,
       password: password
@@ -35,7 +35,8 @@ export default function Login() {
   }
 
   function handleRegisterPage(event) {
-    history.push("/RegistrationScreen");
+
+
   }
 
   return (
@@ -63,7 +64,7 @@ export default function Login() {
           Login
         </Button>
 
-        <Button block size="lg" type="submit" onClick={() => handleRegisterPage()}>
+        <Button block size="lg" type="submit" disabled={!handleRegisterPage()}>
           Register
         </Button>
       </Form>
