@@ -1,21 +1,31 @@
 import React from "react";
+import { Route, BrowserRouter as Router } from "react-router-dom";
+import { PrivateRoute } from "./PrivateRoute.js";
+import { Container, Table } from "react-bootstrap";
+
+// Import Pages
 import Login from "./screens/LoginScreen";
 import RegistrationScreen from "./screens/RegistrationScreen";
+import NavBar from "./components/NavBar/NavBar";
 import ProductPageScreen from "./screens/ProductPageScreen";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ShoppingCart from "./components/ShoppingCart/ShoppingCart";
 
-export default function App() {
+function App() {
   return (
     <div>
-      <Switch>
-        <Route exact path="/">
-          <Login />
-        </Route>
-        <Route path="/RegistrationScreen" component={RegistrationScreen} />
-        <Route path="/LoginScreen" component={Login} />
-        <Route path="/ProductPageScreen" component={ProductPageScreen} />
-      </Switch>
-    </div >
+      <Router>
+        <NavBar />
+        <Route exact path="/" component={Login} />
+        <Route
+          exact
+          path="/RegistrationScreen"
+          component={RegistrationScreen}
+        />
+        <Route exact path="/ProductPageScreen" component={ProductPageScreen} />
+        <Route exact path="/ShoppingCart" component={ShoppingCart} />
+      </Router>
+    </div>
   );
 }
 
+export default App;
