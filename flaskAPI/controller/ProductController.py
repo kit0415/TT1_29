@@ -52,10 +52,17 @@ class ProductController(Resource):
         return {'status': 'success', 'data': "Post User login Controller"}, 200
 
     def getProductById(self,req):
-        product = Product.query.order_by(Product.id).all()
+        if (req["category_id"] is not None):
+            product = Product.query.filter_by(category_id = req["category_id"]).all()
+        else:
+            product = Product.query.order_by(Product.id).all()
+        
         if product:
             return product
         else:
             return None
         # return 400
+
+
+
 
