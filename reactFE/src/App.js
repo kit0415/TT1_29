@@ -1,23 +1,25 @@
 import React from "react";
 import Login from "./screens/LoginScreen";
-//import SignUpScreen from "./src/screens/SignUpScreen";
-//import ProductPageScreen from "./src/screens/ProductPageScreen";
+import RegistrationScreen from "./screens/RegistrationScreen";
+import ProductPageScreen from "./screens/ProductPageScreen";
 import { Route, Switch } from "react-router-dom";
 
-class App extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
-  render() {
-    return (
-      <div>
+
+export default function App() {
+
+
+
+  return (
+    <div>
+      <Switch>
         <Route exact path="/">
           <Login />
         </Route>
-      </div>
-    );
-  }
+        <Route path="/LoginScreen" component={Login} />
+        <Route path="/RegistrationScreen" component={RegistrationScreen} />
+        <Route path="/ProductPageScreen" component={ProductPageScreen} />
+      </Switch>
+    </div >
+  );
 }
 
-export default App;
