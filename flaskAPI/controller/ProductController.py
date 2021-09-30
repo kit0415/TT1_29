@@ -4,6 +4,9 @@ from datetime import date
 from model.Model import db
 import json
 
+
+
+
 class ProductController(Resource):
     def get(self):        
         #get method

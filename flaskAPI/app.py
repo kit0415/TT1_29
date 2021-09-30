@@ -2,6 +2,7 @@ from flask import Blueprint
 from flask_restful import Api
 #from controller.Category import CategoryResource
 from controller.UserController import LoginController,RegisterController,LogoutController
+from controller.CartController import CartController
 
 from controller.Hello import Hello
 
@@ -15,4 +16,8 @@ api.add_resource(Hello,'/Hi')
 api.add_resource(LoginController,'/login')
 api.add_resource(RegisterController,'/register')
 api.add_resource(LogoutController,'/logout')
+
+#cart
+api.add_resource(CartController,'/cart')
+
 #api.add_resource(CategoryResource,'/Category')
