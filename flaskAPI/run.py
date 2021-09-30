@@ -1,10 +1,11 @@
 from flask import Flask
+from flask_cors import CORS, cross_origin
 
 def create_app(config_filename):
     app = Flask(__name__,instance_relative_config=True)
     app.config.from_object(config_filename)
     app.config.from_pyfile('config.py')
-
+    cors = CORS(app)
     from app import api_bp
     app.register_blueprint(api_bp,url_prefix='/api')
 

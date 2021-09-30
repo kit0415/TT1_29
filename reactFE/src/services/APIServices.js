@@ -25,9 +25,6 @@ const deleteOrder = data => {
   return http.post('/api/deleteOrder', data);
 };
 
-const updateOrder = data => {
-  return http.post('/api/updateOrder', data);
-};
 
 const updateProduct = data => {
   return http.post('/api/updateProduct', data);
@@ -38,6 +35,13 @@ const updateOrderItem = data => {
   return http.post('/api/updateOrderItem', data);
 };
 
+const updateOrder = data => {
+  return http.post('/api/updateOrderItem', data);
+};
+
+const logout = data => {
+  return http.post('/api/logout', data);
+};
 
 export default {
   login,
@@ -48,5 +52,6 @@ export default {
   deleteOrder,
   updateOrder,
   updateProduct,
-  updateOrderItem
+  updateOrderItem,
+  logout
 }
